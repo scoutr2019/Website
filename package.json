@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-  "build": "npm ci --legacy-peer-deps",
-  "serve": "node index.js"
+    "build": "npm ci",
+    "serve": "node index.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
