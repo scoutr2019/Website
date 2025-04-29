@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "npm ci",
-    "serve": "node public/index.js"
+  "build": "npm ci --legacy-peer-deps",
+  "serve": "node index.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -48,9 +48,9 @@
     "next": "15.2.4",
     "next-themes": "latest",
     "path": "latest",
-    "react": "^19",
+    "react": "^18.3.1",
     "react-day-picker": "8.10.1",
-    "react-dom": "^19",
+    "react-dom": "^18.3.1",
     "react-hook-form": "^7.54.1",
     "react-resizable-panels": "^2.1.7",
     "recharts": "2.15.0",
