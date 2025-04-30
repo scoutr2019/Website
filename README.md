@@ -77,11 +77,11 @@ Ga dan naar `http://localhost:3000` in je browser.
 
 ## 📸 Screenshots
 
-*(Optioneel: voeg hier enkele screenshots toe van de website)*
+*SOON*
 
 ## 📬 Contact
 
-Vragen of feedback? Mail me gerust via het contactformulier op de website of open een issue hier op GitHub.
+Vragen of feedback? Mail me gerust lode@scoutr.be
 
 ## 📝 Licentie
 
