@@ -12,18 +12,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
 import ContactInfo from "@/components/contact-info"
 
-// Fallback functie voor het geval de fetch mislukt
-const fallbackSubmit = (formData) => {
-  // Log de data naar de console (in een echte omgeving zou je dit niet doen)
-  console.log("Form data submitted (fallback):", formData)
-
-  // Simuleer een succesvolle verzending
-  return {
-    success: true,
-    message: "Bericht ontvangen. We nemen zo snel mogelijk contact met u op.",
-  }
-}
-
 export default function ContactPage() {
   const { toast } = useToast()
   const [formData, setFormData] = useState({
@@ -51,31 +39,17 @@ export default function ContactPage() {
       formDataToSend.append("phone", formData.phone)
       formDataToSend.append("message", formData.message)
 
+      const response = await fetch("/contact-form.php", {
+        method: "POST",
+        body: formDataToSend,
+      })
+
       let data
-
       try {
-        // Probeer de fetch-operatie met een timeout
-        const controller = new AbortController()
-        const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 seconden timeout
-
-        const response = await fetch("/contact-form.php", {
-          method: "POST",
-          body: formDataToSend,
-          signal: controller.signal,
-        })
-
-        clearTimeout(timeoutId)
-
-        try {
-          data = await response.json()
-        } catch (error) {
-          // Als de respons geen JSON is, maak een standaard object
-          data = { success: response.ok, message: response.ok ? "Bericht verzonden" : "Er is een fout opgetreden" }
-        }
-      } catch (fetchError) {
-        console.warn("Fetch failed, using fallback:", fetchError)
-        // Als de fetch mislukt, gebruik de fallback
-        data = fallbackSubmit(formData)
+        data = await response.json()
+      } catch (error) {
+        // Als de respons geen JSON is, maak een standaard object
+        data = { success: response.ok, message: response.ok ? "Bericht verzonden" : "Er is een fout opgetreden" }
       }
 
       if (data.success) {

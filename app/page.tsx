@@ -78,36 +78,23 @@ const allServices = [
 ]
 
 // Functie om willekeurige diensten te selecteren
-// Aangepast om geen runtime errors te veroorzaken
 function getRandomServices(count) {
   // Maak een kopie van de array om de originele niet te wijzigen
   const shuffled = [...allServices]
 
-  // Veiligere implementatie van Fisher-Yates shuffle
+  // Fisher-Yates shuffle algoritme
   for (let i = shuffled.length - 1; i > 0; i--) {
-    // Gebruik Math.random direct, zonder extra berekeningen die kunnen mislukken
     const j = Math.floor(Math.random() * (i + 1))
-    // Gebruik een tijdelijke variabele voor de swap om problemen te voorkomen
-    const temp = shuffled[i]
-    shuffled[i] = shuffled[j]
-    shuffled[j] = temp
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
   }
 
-  // Neem de eerste 'count' items, met een veiligheidscheck
-  return shuffled.slice(0, Math.min(count, shuffled.length))
+  // Neem de eerste 'count' items
+  return shuffled.slice(0, count)
 }
 
-// Voorgeselecteerde diensten om hydration errors te voorkomen
-const preselectedServices = [
-  allServices[0], // Preventie
-  allServices[1], // Vullingen
-  allServices[6], // Implantaten
-]
-
 export default function Home() {
-  // Gebruik voorgeselecteerde diensten om hydration errors te voorkomen
-  // In een client component zou je getRandomServices kunnen gebruiken
-  const services = preselectedServices
+  // Selecteer 3 willekeurige diensten
+  const randomServices = getRandomServices(3)
 
   return (
     <div className="flex flex-col">
@@ -220,25 +207,22 @@ export default function Home() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => {
-              const Icon = service.icon
-              return (
-                <Link href={service.link} key={index} className="block group">
-                  <Card
-                    className="border-primary/10 transition-all duration-300 hover:shadow-md hover:border-primary/30 hover:-translate-y-1 animate-fade-in h-full group-hover:border-primary dark-card"
-                    style={{ animationDelay: `${(index + 1) * 100}ms` }}
-                  >
-                    <CardHeader className="pb-2">
-                      <Icon className="h-8 w-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
-                      <CardTitle className="dark-text">{service.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <CardDescription className="dark-muted-text">{service.description}</CardDescription>
-                    </CardContent>
-                  </Card>
-                </Link>
-              )
-            })}
+            {randomServices.map((service, index) => (
+              <Link href={service.link} key={index} className="block group">
+                <Card
+                  className="border-primary/10 transition-all duration-300 hover:shadow-md hover:border-primary/30 hover:-translate-y-1 animate-fade-in h-full group-hover:border-primary dark-card"
+                  style={{ animationDelay: `${(index + 1) * 100}ms` }}
+                >
+                  <CardHeader className="pb-2">
+                    <service.icon className="h-8 w-8 text-primary mb-2 group-hover:scale-110 transition-transform" />
+                    <CardTitle className="dark-text">{service.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="dark-muted-text">{service.description}</CardDescription>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
           </div>
 
           {/* Gecentreerde knop */}
@@ -253,7 +237,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Rest van de code blijft hetzelfde */}
       {/* Team Preview */}
       <section className="py-16 bg-background">
         <div className="container">

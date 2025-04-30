@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  output: 'export',  // Genereer statische HTML bestanden
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -8,13 +8,9 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    unoptimized: true, // Nodig voor statische export
   },
-  trailingSlash: true,
-  // Voeg deze regel toe om problemen met client-side navigatie op te lossen
-  experimental: {
-    appDocumentPreloading: false
-  }
+  trailingSlash: true, // Voeg een slash toe aan het einde van URL's voor betere compatibiliteit
 };
 
 export default nextConfig;
