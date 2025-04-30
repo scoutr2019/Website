@@ -1,42 +1,44 @@
-# Tandarts Swaelens Website
+🦷 Tandartswebsite – Mijn eerste Node.js-project
 
-## cPanel Installatie Instructies
+Welkom bij de code achter de website van Tandarts Swaelens – gebouwd in Node.js!
 
-### Optie 1: Gebruik het voorgebouwde ZIP bestand (aanbevolen)
+💡 Over dit project
+Dit project was mijn eerste kennismaking met Node.js. Niet alles verliep vlot – van npm-errors tot EJS-syntaxproblemen – maar dankzij veel geduld en doorzettingsvermogen staat er nu een professionele tandartswebsite online waar ik trots op ben. 💪
 
-1. Upload `tandarts-swaelens-website.zip` naar je cPanel
-2. Ga naar File Manager in cPanel
-3. Navigeer naar de `public_html` map (of de map waar je de website wilt installeren)
-4. Klik met de rechtermuisknop op het ZIP bestand en kies "Extract"
-5. Zorg ervoor dat alle bestanden direct in de root map komen (niet in een submap)
-6. De website zou nu moeten werken!
+🌐 Live versie
+👉 tandartsswaelens.be
 
-### Optie 2: Zelf bouwen
+⚙️ Technologieën gebruikt
+Node.js – server-side JavaScript runtime
 
-Als je wijzigingen wilt maken aan de website, kun je deze zelf bouwen:
+Express.js – webframework voor routing en serverlogica
 
-1. Zorg ervoor dat Node.js (v16 of hoger) is geïnstalleerd
-2. Open een terminal en navigeer naar de projectmap
-3. Voer het volgende commando uit:
-   \`\`\`
-   npm install
-   npm run cpanel-build
-   \`\`\`
-4. Dit zal een nieuw ZIP bestand genereren dat je kunt uploaden naar cPanel
+EJS – templates met dynamische content
 
-## Onderhoud
+Bootstrap 5 – responsive front-end design
 
-### Afbeeldingen toevoegen/wijzigen
-- Plaats nieuwe afbeeldingen in de `public/images` map
-- Verwijs naar afbeeldingen in de code met `/images/bestandsnaam.jpg`
+Nodemailer – verstuurt mails via het contactformulier
 
-### Teksten wijzigen
-- De meeste teksten kunnen worden gewijzigd in de bestanden in de `app` map
-- Pagina's bevinden zich in `app/pagina-naam/page.tsx`
+Dotenv – veilige opslag van e-mailconfiguratie
 
-## Contact
+✨ Functionaliteiten
+Informatieve pagina’s (home, behandelingen, contact, team, …)
 
-Voor vragen of ondersteuning, neem contact op met de ontwikkelaar.
-\`\`\`
+Responsief design, mobielvriendelijk
 
-Laten we ook een eenvoudige PHP-bestand maken om te controleren of de server correct is geconfigureerd:
+Contactformulier met werkende e-mailverzending
+
+SSL/HTTPS configuratie voor veilige communicatie
+
+Makkelijk uitbreidbare structuur (routes & views)
+
+📚 Wat ik geleerd heb
+Hoe een webserver opzetten met Node.js en Express
+
+Werken met dynamische templates via EJS
+
+Bootstrap integreren voor mobielvriendelijkheid
+
+E-mails versturen met Nodemailer
+
+Hosting, DNS en SSL instellen voor productie
