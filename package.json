@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "npm ci",
+    "build": "npm ci && npm run realbuild",
+    "realbuild": "vite build",
     "serve": "node index.js"
   },
   "dependencies": {
